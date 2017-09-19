@@ -11,13 +11,13 @@ import java.util.Objects;
  */
 
 public class instructorData {
-    public HashMap<String, Object> courses;
+    public HashMap<String, HashMap<String, String>> courses;
     public String email;
-    public HashMap<String, Object> reviews;
+    public HashMap<String, HashMap<String, String>> reviews;
 
     public instructorData(){}
 
-    public instructorData(HashMap<String, Object> inputData1, String inputData2, HashMap<String, Object> inputData3){
+    public instructorData(HashMap<String, HashMap<String, String>> inputData1, String inputData2, HashMap<String, HashMap<String, String>> inputData3){
         courses= inputData1;
         email= inputData2;
         reviews= inputData3;
@@ -25,8 +25,24 @@ public class instructorData {
 
     @Override
     public String toString() {
-        Log.d("cor: ", String.valueOf(courses == null));
-        Log.d("rvw: ", String.valueOf(reviews== null));
-        return "email";
+        StringBuilder courseinfo= new StringBuilder();
+        courseinfo.append("email: ").append(email).append("\n").append("course info").append("\n");
+        for (String ckey: courses.keySet()){
+            courseinfo.append("\t").append(ckey).append('\n');
+            HashMap<String, String> temp= courses.get(ckey);
+            for(String nkey: temp.keySet()){
+                courseinfo.append("\t\t").append(nkey).append(":\t").append(temp.get(nkey)).append("\n");
+            }
+        }
+        courseinfo.append("reviews").append("\n");
+        for (String ckey: reviews.keySet()){
+            courseinfo.append("\t").append(ckey).append('\n');
+            HashMap<String, String> temp= reviews.get(ckey);
+            for(String nkey: temp.keySet()){
+                courseinfo.append("\t\t").append(nkey).append(":\t").append(temp.get(nkey)).append("\n");
+            }
+        }
+        Log.d("rvw: ", reviews.toString());
+        return courseinfo.toString();
     }
 }
