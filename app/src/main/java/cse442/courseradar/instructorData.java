@@ -27,7 +27,7 @@ public class instructorData {
     public String toString() {
         StringBuilder courseinfo= new StringBuilder();
         courseinfo.append("email: ").append(email).append("\n").append("course info").append("\n");
-        for (String ckey: courses.keySet()){
+        /*for (String ckey: courses.keySet()){
             courseinfo.append("\t").append(ckey).append('\n');
             HashMap<String, String> temp= courses.get(ckey);
             for(String nkey: temp.keySet()){
@@ -41,8 +41,7 @@ public class instructorData {
             for(String nkey: temp.keySet()){
                 courseinfo.append("\t\t").append(nkey).append(":\t").append(temp.get(nkey)).append("\n");
             }
-        }
-        Log.d("rvw: ", reviews.toString());
+        }*/
         return courseinfo.toString();
     }
 }
